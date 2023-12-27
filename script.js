@@ -170,6 +170,10 @@ function fenceCycle() {
         fenceClone.switchCostume(1);
       }
 
+      if (isGame == false) {
+        fenceClone.hidden = true;
+      }
+
       // удаление забора
       if (fenceClone.x < 0) {
         fenceClone.delete();
