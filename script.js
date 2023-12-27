@@ -75,6 +75,7 @@ bush.layer = 1;
 let gameOver = new Sprite();
 gameOver.addCostume("./images/gameOver.png");
 gameOver.hidden = true;
+gameOver.layer = 7;
 
 // переменная прыжка
 let isJump = false;
