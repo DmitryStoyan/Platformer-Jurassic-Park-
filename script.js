@@ -1,4 +1,4 @@
-let game = new Game();
+let game = new Game(844, 390);
 
 let stage = new Stage();
 stage.backgroundColor = "skyblue";
