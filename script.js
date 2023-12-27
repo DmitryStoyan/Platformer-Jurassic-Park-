@@ -239,13 +239,13 @@ stage.pen(drawScore, 7);
 
 game.run();
 
-const button = document.querySelector(".button");
+const downloadButton = document.querySelector(".download-button");
 // Установка
 let defaultInstallEvent = null;
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   defaultInstallEvent = event;
 });
-button.addEventListener("click", (event) => {
+downloadButton.addEventListener("click", (event) => {
   defaultInstallEvent.prompt();
 });
