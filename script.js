@@ -77,6 +77,13 @@ gameOver.addCostume("./images/gameOver.png");
 gameOver.hidden = true;
 gameOver.layer = 7;
 
+let restart = new Sprite();
+restart.addCostume("./images/restart.png");
+restart.size = 150;
+restart.x = 700;
+restart.layer = 7;
+restart.hidden = true;
+
 // переменная прыжка
 let isJump = false;
 // переменная скорости по y
@@ -90,9 +97,9 @@ let mouse = new Mouse();
 
 //игровой процесс
 function playerCycle() {
-  if (isGame == false) {
-    return false;
-  }
+  // if (isGame == false) {
+  //   return false;
+  // }
 
   // когда игрок стоит на земле он может прыгнуть
   if (player.touchSprite(ground)) {
@@ -103,6 +110,17 @@ function playerCycle() {
   if (game.mouseDown(mouse) && isJump == false) {
     ySpeed = -16;
     isJump = true;
+  }
+
+  if (game.mouseDown(mouse) && isGame == false) {
+    isGame = true;
+    player.hidden = false;
+    gameOver.hidden = true;
+    restart.hidden = true;
+    player.y = 0;
+    player.x = 400;
+    score = 0;
+    console.log("restart");
   }
 
   if (game.keyPressed("space") && isJump == false) {
@@ -118,6 +136,7 @@ function playerCycle() {
     isGame = false;
     player.hidden = true;
     gameOver.hidden = false;
+    restart.hidden = false;
   }
 }
 
