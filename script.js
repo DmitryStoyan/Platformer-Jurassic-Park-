@@ -21,7 +21,7 @@ player.addCostume("./images/p7.png");
 player.addCostume("./images/p8.png");
 player.addCostume("./images/p9.png");
 player.addCostume("./images/p10.png");
-player.y = 350;
+player.y = 0;
 player.x = 400;
 player.size = 80;
 player.layer = 5;
@@ -85,23 +85,13 @@ let score = 0;
 // определяет запущенна ли игра
 let isGame = true;
 
+let mouse = new Mouse();
+
 //игровой процесс
 function playerCycle() {
   if (isGame == false) {
     return false;
   }
-
-  // обработка касания экрана для прыжка
-  document.addEventListener("touchstart", function (event) {
-    if (player.touchSprite(ground) && isJump === false) {
-      ySpeed = -16;
-      isJump = true;
-      console.log("!!!!");
-    }
-    console.log("11111");
-    ySpeed = -16;
-    isJump = true;
-  });
 
   // когда игрок стоит на земле он может прыгнуть
   if (player.touchSprite(ground)) {
@@ -109,7 +99,11 @@ function playerCycle() {
     isJump = false;
   }
 
-  // когда мы нажимаем пробел, то можно прыгнуть
+  if (game.mouseDown(mouse) && isJump == false) {
+    ySpeed = -16;
+    isJump = true;
+  }
+
   if (game.keyPressed("space") && isJump == false) {
     ySpeed = -16;
     isJump = true;
@@ -245,7 +239,7 @@ stage.pen(drawScore, 7);
 
 game.run();
 
-let button = document.querySelector(".button");
+const button = document.querySelector(".button");
 // Установка
 let defaultInstallEvent = null;
 window.addEventListener("beforeinstallprompt", (event) => {

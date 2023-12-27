@@ -2,16 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="manifest" href="manifest.webmanifest" />
     <meta
       name="viewport"
       content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
     <title>Document</title>
   </head>
   <body>
     <button class="button">Скачать</button>
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Хотите установить игру на свое устройство?</p>
+        <button id="installButton">Установить</button>
+      </div>
+    </div>
+
     <script src="./scrub.js"></script>
     <script src="./script.js"></script>
   </body>
