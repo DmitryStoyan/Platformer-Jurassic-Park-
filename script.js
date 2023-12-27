@@ -244,3 +244,14 @@ stage.forever(cloudCycle, 1000);
 stage.pen(drawScore, 7);
 
 game.run();
+
+let button = document.querySelector(".button");
+// Установка
+let defaultInstallEvent = null;
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  defaultInstallEvent = event;
+});
+button.addEventListener("click", (event) => {
+  defaultInstallEvent.prompt();
+});

@@ -1,0 +1,13 @@
+{
+  "name": "Jurassic Park",
+  "start_url": "index.html",
+  "orientation": "portrait",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "dino-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
