@@ -1,7 +1,7 @@
 {
   "name": "Jurassic Park",
   "start_url": "index.html",
-  "orientation": "portrait",
+  "orientation": "landscape",
   "display": "fullscreen",
   "icons": [
     {
