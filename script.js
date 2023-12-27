@@ -3,6 +3,10 @@ let game = new Game(844, 390);
 let stage = new Stage();
 stage.backgroundColor = "skyblue";
 
+let distance = 0; // переменная для отслеживания пройденного расстояния
+let acceleration = 0.1; // коэффициент ускорения
+let speed = 5; // скорость player
+
 //дорога
 let ground = new Sprite();
 ground.addCostume("./images/ground.png");
@@ -121,6 +125,9 @@ function playerCycle() {
     player.x = 400;
     score = 0;
     console.log("restart");
+    distance = 0;
+    acceleration = 0.1;
+    speed = 5;
   }
 
   if (game.keyPressed("space") && isJump == false) {
@@ -137,6 +144,9 @@ function playerCycle() {
     player.hidden = true;
     gameOver.hidden = false;
     restart.hidden = false;
+    // distance = 0;
+    // acceleration = 0.1;
+    // speed = 5;
   }
 }
 
@@ -152,17 +162,21 @@ function dinoAnimation() {
 
 // запуск заборов
 function fenceCycle() {
+  // distance += Math.floor(speed);
+  // speed += acceleration * (distance / 50);
   if (game.getRandom(0, 10) > 3) {
     let fenceClone = fence.createClone();
     fenceClone.x = stage.width + 50;
     fenceClone.hidden = false;
 
     stage.forever(function () {
-      fenceClone.x -= 5;
+      // fenceClone.x -= 5;
+      fenceClone.x -= speed;
 
       // если касается игрока то игрок замедляется
       if (fenceClone.touchSprite(player)) {
-        player.x -= 5;
+        // player.x -= 5;
+        player.x -= speed;
       }
 
       // если забор касается динозавра то ломается
@@ -252,6 +266,13 @@ function drawScore(context) {
   context.fillText(score, 50, stage.height - 50);
 }
 
+function changeSpeed() {
+  distance += 0.1;
+  speed += distance;
+  console.log(speed);
+}
+
+stage.forever(changeSpeed, 3000);
 stage.forever(playerCycle);
 stage.forever(playerAnimation, 50);
 stage.forever(dinoAnimation, 100);
